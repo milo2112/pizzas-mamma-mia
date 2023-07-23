@@ -1,13 +1,16 @@
 {
   "name": "pizzas-mamma-mia",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "standard --fix",
     "preview": "vite preview"
+  },
+  "eslintConfig": {
+    "extends":["./node_modules/standard/eslintrc.json"]
   },
   "dependencies": {
     "react": "^18.2.0",
