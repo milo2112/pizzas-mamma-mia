@@ -1,1 +1,1 @@
-export const ENDPOINT = '../assets/apidata/pizzas.json' 
+export const ENDPOINT = '../assets/apidata/pizzas.json'
