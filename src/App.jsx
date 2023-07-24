@@ -1,6 +1,7 @@
 // import { useState } from 'react'
 // import { ENDPOINT } from './constants/constants'
 import NavigationBar from './components/NavigationBar'
+import ImgTitle from './components/imgTitle'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App () {
@@ -10,6 +11,7 @@ function App () {
     <>
       <BrowserRouter>
         <NavigationBar />
+        <ImgTitle />
         <Routes>
           <Route path='/' element='' />
         </Routes>
