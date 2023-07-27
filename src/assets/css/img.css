@@ -3,7 +3,7 @@
     filter:brightness(0.5);
 }
 
-.texto-encima{
+.above-text{
     position: absolute;
     top: 5.2vw;
     left: 39.5vw;
@@ -11,10 +11,27 @@
     font-size: 2.2vw;
 }
 
-.texto-medio{
+.middle-text{
     position: absolute;
     top: 8.5vw;
     left: 40.2vw;
     color: white;
     font-size: 0.9vw; 
 }
+
+  .card:hover {
+    box-shadow: 5px 10px 20px 1px rgba(255, 255, 255, 0.273) !important;
+    transition: all 0.5s linear;
+  }
+
+  .card-img-top:hover {
+    transform: scale(1.8);
+  }
+
+  .card-img-top {
+    transition: all 0.2s ease-in-out;
+  }
+
+  .overflow {
+    overflow: hidden;
+  }

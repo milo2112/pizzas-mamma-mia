@@ -9,7 +9,7 @@ export default function NavigationBar () {
   }
   return (
     <>
-      <Navbar expand='lg' bg='info' data-bs-theme='light'>
+      <Navbar expand='lg' bg='danger' data-bs-theme='light'>
         <Container>
           <Navbar.Brand>
             <NavLink to='/' className='text-white text-decoration-none'> 🍕 Pizzeria Mamma Mia!</NavLink>
@@ -17,8 +17,8 @@ export default function NavigationBar () {
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
-              <NavLink to='/' className={setActiveClass}>🛒</NavLink>
-              <NavLink to='/search' className={setActiveClass}>Monto</NavLink>
+              <NavLink to='/' className={setActiveClass}>Home</NavLink>
+              <NavLink to='/shoppingCart' className={setActiveClass}>🛒</NavLink>
             </Nav>
           </Navbar.Collapse>
         </Container>
