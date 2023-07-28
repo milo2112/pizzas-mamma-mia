@@ -1,10 +1,14 @@
-import { React, useContext } from 'react'
+import { React } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Card, Container, ListGroup, Button } from 'react-bootstrap'
-import GlobalContext from '../context/GlobalContext'
 
 export default function PizzaCard ({ id, img, name, ingredients, price }) {
-  const { pizzaData } = useContext(GlobalContext)
-  console.log(`pizzadata-contexto---> ${pizzaData}`)
+  const navigate = useNavigate()
+
+  const goPizzaDetail = (pizzaCardId) => {
+    navigate(`/pizzadetail/${pizzaCardId}`)
+  }
+
   return (
     <>
       <Container>
@@ -27,7 +31,7 @@ export default function PizzaCard ({ id, img, name, ingredients, price }) {
             <Card.Text className='text-center display-6'>${price}</Card.Text>
           </Card.Body>
           <Card.Body className='d-flex justify-content-center gap-3'>
-            <Button variant='outline-primary' size='sm'>Ver Más 👀</Button>
+            <Button variant='outline-primary' size='sm' onClick={() => goPizzaDetail(id)}>Ver Más 👀</Button>
             <Button variant='outline-danger' size='sm'>Añadir  🛒</Button>
           </Card.Body>
         </Card>

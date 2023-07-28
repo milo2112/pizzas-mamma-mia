@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
 import { ENDPOINT } from './constants/constants'
 import NavigationBar from './components/NavigationBar'
-import ImgTitle from './components/imgTitle'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import GlobalContext from './context/GlobalContext'
 import Home from './views/Home'
-// import 'bootstrap/dist/css/bootstrap.min.css'
+import PizzaDetail from './components/PizzaDetail'
 
 function App () {
   const [pizzaData, setPizzaData] = useState([])
@@ -28,13 +27,13 @@ function App () {
   const sharedGlobal = { pizzaData, setPizzaData }
 
   return (
-    <div className='bg-danger'>
+    <div className='bg-dark'>
       <GlobalContext.Provider value={sharedGlobal}>
         <BrowserRouter>
           <NavigationBar />
-          <ImgTitle />
           <Routes>
             <Route path='/' element={<Home />} />
+            <Route path='/pizzadetail/:idPizza' element={<PizzaDetail />} />
           </Routes>
         </BrowserRouter>
       </GlobalContext.Provider>

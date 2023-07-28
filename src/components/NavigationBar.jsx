@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, Container, Nav } from 'react-bootstrap'
+import { Navbar, Container, Nav, Badge } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 
 export default function NavigationBar () {
@@ -9,7 +9,7 @@ export default function NavigationBar () {
   }
   return (
     <>
-      <Navbar expand='lg' bg='danger' data-bs-theme='light'>
+      <Navbar className='sticky-top' expand='lg' bg='danger' data-bs-theme='light'>
         <Container>
           <Navbar.Brand>
             <NavLink to='/' className='text-white text-decoration-none'> 🍕 Pizzeria Mamma Mia!</NavLink>
@@ -17,8 +17,8 @@ export default function NavigationBar () {
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
-              <NavLink to='/' className={setActiveClass}>Home</NavLink>
-              <NavLink to='/shoppingCart' className={setActiveClass}>🛒</NavLink>
+              <h5><NavLink to='/' className={setActiveClass}>Home</NavLink></h5>
+              <h5><NavLink to='/shoppingCart' className={setActiveClass}>🛒</NavLink></h5>
             </Nav>
           </Navbar.Collapse>
         </Container>
