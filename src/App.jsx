@@ -8,6 +8,8 @@ import PizzaDetail from './components/PizzaDetail'
 
 function App () {
   const [pizzaData, setPizzaData] = useState([])
+  const [pizzaToBuy, setPizzaToBuy] = useState([])
+  const [pizzaTotalPrice, setPizzaTotalPrice] = useState(0)
   // console.log(`CONSTANTE ENDPOINT--> ${ENDPOINT}`)
   const getData = async (url) => {
     try {
@@ -24,7 +26,7 @@ function App () {
     getData(ENDPOINT)
   }, [])
   // console.log(`pizzadata-App.jsx---> ${pizzaData}`)
-  const sharedGlobal = { pizzaData, setPizzaData }
+  const sharedGlobal = { pizzaData, setPizzaData, pizzaTotalPrice, setPizzaTotalPrice, pizzaToBuy, setPizzaToBuy }
 
   return (
     <div className='bg-dark'>
