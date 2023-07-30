@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react'
 import { ENDPOINT } from './constants/constants'
 import NavigationBar from './components/NavigationBar'
-import ImgTitle from './components/imgTitle'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import GlobalContext from './context/GlobalContext'
 import Home from './views/Home'
-// import 'bootstrap/dist/css/bootstrap.min.css'
+import PizzaDetail from './components/PizzaDetail'
+import ShoppingCartView from './views/ShoppingCartView'
 
 function App () {
   const [pizzaData, setPizzaData] = useState([])
+  const [pizzaToBuy, setPizzaToBuy] = useState([])
+  const [pizzaTotalPrice, setPizzaTotalPrice] = useState(0)
   // console.log(`CONSTANTE ENDPOINT--> ${ENDPOINT}`)
   const getData = async (url) => {
     try {
@@ -25,16 +27,17 @@ function App () {
     getData(ENDPOINT)
   }, [])
   // console.log(`pizzadata-App.jsx---> ${pizzaData}`)
-  const sharedGlobal = { pizzaData, setPizzaData }
+  const sharedGlobal = { pizzaData, setPizzaData, pizzaTotalPrice, setPizzaTotalPrice, pizzaToBuy, setPizzaToBuy }
 
   return (
-    <div className='bg-danger'>
+    <div className='bg-dark'>
       <GlobalContext.Provider value={sharedGlobal}>
         <BrowserRouter>
           <NavigationBar />
-          <ImgTitle />
           <Routes>
             <Route path='/' element={<Home />} />
+            <Route path='/shoppingcartview' element={<ShoppingCartView />} />
+            <Route path='/pizzadetail/:idPizza' element={<PizzaDetail />} />
           </Routes>
         </BrowserRouter>
       </GlobalContext.Provider>
