@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import GlobalContext from './context/GlobalContext'
 import Home from './views/Home'
 import PizzaDetail from './components/PizzaDetail'
+import ShoppingCartView from './views/ShoppingCartView'
 
 function App () {
   const [pizzaData, setPizzaData] = useState([])
@@ -35,6 +36,7 @@ function App () {
           <NavigationBar />
           <Routes>
             <Route path='/' element={<Home />} />
+            <Route path='/shoppingcartview' element={<ShoppingCartView />} />
             <Route path='/pizzadetail/:idPizza' element={<PizzaDetail />} />
           </Routes>
         </BrowserRouter>

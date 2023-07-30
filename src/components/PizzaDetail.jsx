@@ -3,16 +3,21 @@ import { useParams } from 'react-router-dom'
 import { Container, Row, Col, ListGroup, Card, Button } from 'react-bootstrap'
 import GlobalContext from '../context/GlobalContext'
 import '../assets/css/img.css'
+import currencyFormatter from '../functions/currencyFormatter'
 
 export default function PizzaDetail () {
-  const { pizzaData, setPizzaTotalPrice, setPizzaToBuy } = useContext(GlobalContext)
+  const { pizzaData, setPizzaTotalPrice, pizzaToBuy, setPizzaToBuy } = useContext(GlobalContext)
   const { idPizza } = useParams()
 
   const addToShoppingCart = (addId, addImg, addName, addPrice) => {
     setPizzaTotalPrice((prevValue) => prevValue + addPrice)
-    const myCart = [addId, addImg, addName, addPrice]
-    setPizzaToBuy(myCart)
-    // console.log(myCart)
+    const pizzaIdx = pizzaToBuy.findIndex(element => element.selectedPizza.id === addId)
+    if (pizzaIdx < 0) {
+      const pizzaToMyCart = { selectedPizza: { id: addId, name: addName, price: addPrice, img: addImg }, count: 1 }
+      setPizzaToBuy([...pizzaToBuy, pizzaToMyCart])
+    } else {
+      pizzaToBuy[pizzaIdx].count += 1
+    }
   }
 
   return (
@@ -20,7 +25,7 @@ export default function PizzaDetail () {
       <Container className='bg-dark mt-5 text-white'>
         {pizzaData.filter((pizza) => pizza.id === idPizza)
           .map(({ id, img, desc, name, ingredients, price }) => (
-            <Row key={id} className='h-100'>
+            <Row key={id}>
               <Col className='overflow mt-5' style={{ height: '50rem' }}>
                 <img className='border-radius detail-img-top' src={img} />
               </Col>
@@ -45,7 +50,7 @@ export default function PizzaDetail () {
                   ))}
                 </ListGroup>
                 <Card.Body className='d-flex justify-content-center gap-5'>
-                  <Card.Text className='display-6 mt-4 me-5'>Precio: ${price}</Card.Text>
+                  <Card.Text className='display-6 mt-4 me-5'>Precio: ${currencyFormatter(price)}</Card.Text>
                   <Button
                     className='mt-4 me-5'
                     variant='outline-danger'

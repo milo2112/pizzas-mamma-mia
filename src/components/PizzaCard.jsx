@@ -2,10 +2,11 @@ import { React, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Card, Container, ListGroup, Button } from 'react-bootstrap'
 import GlobalContext from '../context/GlobalContext'
+import currencyFormatter from '../functions/currencyFormatter'
 
 export default function PizzaCard ({ id, img, name, ingredients, price }) {
   const navigate = useNavigate()
-  const { setPizzaToBuy, setPizzaTotalPrice } = useContext(GlobalContext)
+  const { pizzaToBuy, setPizzaToBuy, setPizzaTotalPrice } = useContext(GlobalContext)
 
   const goPizzaDetail = (pizzaCardId) => {
     navigate(`/pizzadetail/${pizzaCardId}`)
@@ -13,9 +14,13 @@ export default function PizzaCard ({ id, img, name, ingredients, price }) {
 
   const addToShoppingCart = (addId, addImg, addName, addPrice) => {
     setPizzaTotalPrice((prevValue) => prevValue + addPrice)
-    const myCart = [addId, addImg, addName, addPrice]
-    setPizzaToBuy(myCart)
-    // console.log(myCart)
+    const pizzaIdx = pizzaToBuy.findIndex(element => element.selectedPizza.id === addId)
+    if (pizzaIdx < 0) {
+      const pizzaToMyCart = { selectedPizza: { id: addId, name: addName, price: addPrice, img: addImg }, count: 1 }
+      setPizzaToBuy([...pizzaToBuy, pizzaToMyCart])
+    } else {
+      pizzaToBuy[pizzaIdx].count += 1
+    }
   }
 
   return (
@@ -41,7 +46,7 @@ export default function PizzaCard ({ id, img, name, ingredients, price }) {
             ))}
           </ListGroup>
           <Card.Body>
-            <Card.Text className='text-center display-6'>${price}</Card.Text>
+            <Card.Text className='text-center display-6'>${currencyFormatter(price)}</Card.Text>
           </Card.Body>
           <Card.Body className='d-flex justify-content-center gap-3'>
             <Button
