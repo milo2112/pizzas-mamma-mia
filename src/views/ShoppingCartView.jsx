@@ -4,6 +4,7 @@ import GlobalContext from '../context/GlobalContext'
 import { Container, Row, Col, Button, Alert } from 'react-bootstrap'
 import Home from '../views/Home'
 import '../assets/css/img.css'
+import currencyFormatter from '../functions/currencyFormatter'
 
 export default function ShoppingCartView () {
   const { pizzaToBuy, setPizzaToBuy, pizzaTotalPrice, setPizzaTotalPrice } = useContext(GlobalContext)
@@ -22,11 +23,12 @@ export default function ShoppingCartView () {
     return (
       <Alert variant='success' onClose={() => finishPurchase()} dismissible>
         <Container className='text-center fluid h-100'>
-          <Alert.Heading>¡Tu compra ha sido realizada!
+          <Alert.Heading>¡Tu compra ha sido realizada!<br /><br />
+            Estamos redireccionando al portal de pagos<br /><br />
             <p>
               ¡Tu pedido llegará en menos de 30 minutos, si no, te devolvemos
               tu dinero!<br /><br />
-              ¡Muchas gracias por tu compra!
+              ¡Muchas gracias por preferir Pizzería Mamma Mía!
             </p>
           </Alert.Heading>
         </Container>
@@ -54,7 +56,7 @@ export default function ShoppingCartView () {
             <h5
               bg='secondary'
               className='fw-bold text-white display-6 mb-3 mt-4'
-            > Total a Pagar $ {pizzaTotalPrice}
+            > Total a Pagar $ {currencyFormatter(pizzaTotalPrice)}
             </h5>
           </Col>
           <Col style={{ paddingBottom: '48.8%' }}>

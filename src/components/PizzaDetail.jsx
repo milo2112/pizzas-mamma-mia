@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { Container, Row, Col, ListGroup, Card, Button } from 'react-bootstrap'
 import GlobalContext from '../context/GlobalContext'
 import '../assets/css/img.css'
+import currencyFormatter from '../functions/currencyFormatter'
 
 export default function PizzaDetail () {
   const { pizzaData, setPizzaTotalPrice, pizzaToBuy, setPizzaToBuy } = useContext(GlobalContext)
@@ -49,7 +50,7 @@ export default function PizzaDetail () {
                   ))}
                 </ListGroup>
                 <Card.Body className='d-flex justify-content-center gap-5'>
-                  <Card.Text className='display-6 mt-4 me-5'>Precio: ${price}</Card.Text>
+                  <Card.Text className='display-6 mt-4 me-5'>Precio: ${currencyFormatter(price)}</Card.Text>
                   <Button
                     className='mt-4 me-5'
                     variant='outline-danger'

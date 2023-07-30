@@ -2,6 +2,7 @@ import { React, useContext } from 'react'
 import { ListGroup, Badge, Image, Button } from 'react-bootstrap'
 import '../assets/css/img.css'
 import GlobalContext from '../context/GlobalContext'
+import currencyFormatter from '../functions/currencyFormatter'
 
 function ShoppingCart ({ id, img, name, price, count }) {
   const { setPizzaTotalPrice, pizzaToBuy } = useContext(GlobalContext)
@@ -32,7 +33,7 @@ function ShoppingCart ({ id, img, name, price, count }) {
           </div>
           <h5>
             <Badge className='mt-5 me-5' bg='secondary' pill>
-              $ {count * price}
+              $ {currencyFormatter(count * price)}
             </Badge>
           </h5>
           <Button

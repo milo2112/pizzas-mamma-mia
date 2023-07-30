@@ -2,6 +2,7 @@ import { React, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Card, Container, ListGroup, Button } from 'react-bootstrap'
 import GlobalContext from '../context/GlobalContext'
+import currencyFormatter from '../functions/currencyFormatter'
 
 export default function PizzaCard ({ id, img, name, ingredients, price }) {
   const navigate = useNavigate()
@@ -45,7 +46,7 @@ export default function PizzaCard ({ id, img, name, ingredients, price }) {
             ))}
           </ListGroup>
           <Card.Body>
-            <Card.Text className='text-center display-6'>${price}</Card.Text>
+            <Card.Text className='text-center display-6'>${currencyFormatter(price)}</Card.Text>
           </Card.Body>
           <Card.Body className='d-flex justify-content-center gap-3'>
             <Button
