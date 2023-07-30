@@ -5,14 +5,18 @@ import GlobalContext from '../context/GlobalContext'
 import '../assets/css/img.css'
 
 export default function PizzaDetail () {
-  const { pizzaData, setPizzaTotalPrice, setPizzaToBuy } = useContext(GlobalContext)
+  const { pizzaData, setPizzaTotalPrice, pizzaToBuy, setPizzaToBuy } = useContext(GlobalContext)
   const { idPizza } = useParams()
 
   const addToShoppingCart = (addId, addImg, addName, addPrice) => {
     setPizzaTotalPrice((prevValue) => prevValue + addPrice)
-    const myCart = [addId, addImg, addName, addPrice]
-    setPizzaToBuy(myCart)
-    // console.log(myCart)
+    const pizzaIdx = pizzaToBuy.findIndex(element => element.selectedPizza.id === addId)
+    if (pizzaIdx < 0) {
+      const pizzaToMyCart = { selectedPizza: { id: addId, name: addName, price: addPrice, img: addImg }, count: 1 }
+      setPizzaToBuy([...pizzaToBuy, pizzaToMyCart])
+    } else {
+      pizzaToBuy[pizzaIdx].count += 1
+    }
   }
 
   return (
@@ -20,7 +24,7 @@ export default function PizzaDetail () {
       <Container className='bg-dark mt-5 text-white'>
         {pizzaData.filter((pizza) => pizza.id === idPizza)
           .map(({ id, img, desc, name, ingredients, price }) => (
-            <Row key={id} className='h-100'>
+            <Row key={id}>
               <Col className='overflow mt-5' style={{ height: '50rem' }}>
                 <img className='border-radius detail-img-top' src={img} />
               </Col>

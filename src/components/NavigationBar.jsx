@@ -20,7 +20,7 @@ export default function NavigationBar () {
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
               <h5><NavLink to='/' className={setActiveClass}>Home</NavLink></h5>
-              <h5><NavLink to='/shoppingCart' className={setActiveClass}>🛒</NavLink></h5>
+              <h5><NavLink to='/shoppingcartview' className={setActiveClass}>🛒</NavLink></h5>
               <h5><Badge bg='secondary'>$ {pizzaTotalPrice}</Badge></h5>
             </Nav>
           </Navbar.Collapse>
