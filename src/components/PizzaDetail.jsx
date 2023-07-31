@@ -6,14 +6,28 @@ import '../assets/css/img.css'
 import currencyFormatter from '../functions/currencyFormatter'
 
 export default function PizzaDetail () {
-  const { pizzaData, setPizzaTotalPrice, pizzaToBuy, setPizzaToBuy } = useContext(GlobalContext)
+  const {
+    pizzaData,
+    setPizzaTotalPrice,
+    pizzaToBuy,
+    setPizzaToBuy
+  } = useContext(GlobalContext)
+
   const { idPizza } = useParams()
 
   const addToShoppingCart = (addId, addImg, addName, addPrice) => {
     setPizzaTotalPrice((prevValue) => prevValue + addPrice)
     const pizzaIdx = pizzaToBuy.findIndex(element => element.selectedPizza.id === addId)
     if (pizzaIdx < 0) {
-      const pizzaToMyCart = { selectedPizza: { id: addId, name: addName, price: addPrice, img: addImg }, count: 1 }
+      const pizzaToMyCart = {
+        selectedPizza: {
+          id: addId,
+          name: addName,
+          price: addPrice,
+          img: addImg
+        },
+        count: 1
+      }
       setPizzaToBuy([...pizzaToBuy, pizzaToMyCart])
     } else {
       pizzaToBuy[pizzaIdx].count += 1

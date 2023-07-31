@@ -43,7 +43,7 @@ function ShoppingCart ({ id, img, name, price, count }) {
             onClick={() => removeFromShoppingCart(id, price)}
           >-
           </Button>
-          <div className='fw-bold text-white p-2 mt-5 me-5'>
+          <div className='fw-bold text-white p-2 mt-5 me-5 display-5' style={{ textAlign: 'center' }}>
             <h5>{count}</h5>
           </div>
           <Button

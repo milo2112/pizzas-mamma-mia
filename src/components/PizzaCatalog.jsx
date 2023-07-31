@@ -11,7 +11,13 @@ export default function PizzaCatalog () {
         <Row>
           {pizzaData.map(({ id, img, name, ingredients, price }) => (
             <Col className='col-md-4 mt-5 mb-5' key={id}>
-              <PizzaCard id={id} img={img} name={name} ingredients={ingredients} price={price} />
+              <PizzaCard
+                id={id}
+                img={img}
+                name={name}
+                ingredients={ingredients}
+                price={price}
+              />
             </Col>
           ))}
         </Row>
