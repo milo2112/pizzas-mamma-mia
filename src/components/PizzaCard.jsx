@@ -6,7 +6,11 @@ import currencyFormatter from '../functions/currencyFormatter'
 
 export default function PizzaCard ({ id, img, name, ingredients, price }) {
   const navigate = useNavigate()
-  const { pizzaToBuy, setPizzaToBuy, setPizzaTotalPrice } = useContext(GlobalContext)
+  const {
+    pizzaToBuy,
+    setPizzaToBuy,
+    setPizzaTotalPrice
+  } = useContext(GlobalContext)
 
   const goPizzaDetail = (pizzaCardId) => {
     navigate(`/pizzadetail/${pizzaCardId}`)
@@ -16,7 +20,15 @@ export default function PizzaCard ({ id, img, name, ingredients, price }) {
     setPizzaTotalPrice((prevValue) => prevValue + addPrice)
     const pizzaIdx = pizzaToBuy.findIndex(element => element.selectedPizza.id === addId)
     if (pizzaIdx < 0) {
-      const pizzaToMyCart = { selectedPizza: { id: addId, name: addName, price: addPrice, img: addImg }, count: 1 }
+      const pizzaToMyCart = {
+        selectedPizza: {
+          id: addId,
+          name: addName,
+          price: addPrice,
+          img: addImg
+        },
+        count: 1
+      }
       setPizzaToBuy([...pizzaToBuy, pizzaToMyCart])
     } else {
       pizzaToBuy[pizzaIdx].count += 1
