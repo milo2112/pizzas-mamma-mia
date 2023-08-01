@@ -4,10 +4,10 @@ import ImgTitle from '../components/imgTitle'
 
 function Home () {
   return (
-    <>
+    <div className='bg-dark'>
       <ImgTitle />
       <PizzaCatalog />
-    </>
+    </div>
   )
 }
 
