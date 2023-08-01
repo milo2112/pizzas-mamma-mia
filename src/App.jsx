@@ -6,6 +6,7 @@ import GlobalContext from './context/GlobalContext'
 import Home from './views/Home'
 import PizzaDetail from './components/PizzaDetail'
 import ShoppingCartView from './views/ShoppingCartView'
+import NotFound from './components/NotFound'
 
 function App () {
   const [pizzaData, setPizzaData] = useState([])
@@ -36,7 +37,7 @@ function App () {
   }
 
   return (
-    <div className='bg-dark'>
+    <div>
       <GlobalContext.Provider value={sharedGlobal}>
         <BrowserRouter>
           <NavigationBar />
@@ -44,6 +45,7 @@ function App () {
             <Route path='/' element={<Home />} />
             <Route path='/shoppingcartview' element={<ShoppingCartView />} />
             <Route path='/pizzadetail/:idPizza' element={<PizzaDetail />} />
+            <Route path='*' element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </GlobalContext.Provider>
