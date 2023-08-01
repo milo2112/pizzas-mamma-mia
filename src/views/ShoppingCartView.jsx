@@ -43,8 +43,8 @@ export default function ShoppingCartView () {
   }
 
   return (
-    <>
-      <div className='text-white display-6 mt-5 ms-5'>Detalles del Pedido:</div>
+    <div className='bg-dark'>
+      <div className='text-white display-6 ms-5'>Detalles del Pedido:</div>
       <Container className='mt-5 text-color'>
         {pizzaToBuy.map(({ selectedPizza, count }) => (
           <Row key={selectedPizza.id} className='mb-3'>
@@ -76,6 +76,6 @@ export default function ShoppingCartView () {
           </Col>
         </Row>
       </Container>
-    </>
+    </div>
   )
 }

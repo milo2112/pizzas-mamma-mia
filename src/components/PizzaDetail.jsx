@@ -35,8 +35,8 @@ export default function PizzaDetail () {
   }
 
   return (
-    <>
-      <Container className='bg-dark mt-5 text-white'>
+    <div className='bg-dark'>
+      <Container className='bg-dark mt-0 text-white'>
         {pizzaData.filter((pizza) => pizza.id === idPizza)
           .map(({ id, img, desc, name, ingredients, price }) => (
             <Row key={id}>
@@ -77,6 +77,6 @@ export default function PizzaDetail () {
             </Row>
           ))}
       </Container>
-    </>
+    </div>
   )
 }
