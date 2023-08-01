@@ -65,7 +65,7 @@ export default function ShoppingCartView () {
             > Total a Pagar $ {currencyFormatter(pizzaTotalPrice)}
             </h5>
           </Col>
-          <Col style={{ paddingBottom: '48.8%' }}>
+          <Col style={{ paddingBottom: '53%' }}>
             <Button
               className='mt-4 me-5'
               variant='outline-success'
