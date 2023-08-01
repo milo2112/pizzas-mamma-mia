@@ -28,7 +28,7 @@ export default function ShoppingCartView () {
         onClose={() => setShow(false)}
         dismissible
       >
-        <Container className='text-center fluid h-100'>
+        <Container className='text-center'>
           <Alert.Heading>¡Tu compra ha sido realizada!<br /><br />
             Estamos redireccionando al portal de pagos<br /><br />
             <p>
@@ -65,7 +65,7 @@ export default function ShoppingCartView () {
             > Total a Pagar $ {currencyFormatter(pizzaTotalPrice)}
             </h5>
           </Col>
-          <Col style={{ paddingBottom: '48.8%' }}>
+          <Col style={{ paddingBottom: '53%' }}>
             <Button
               className='mt-4 me-5'
               variant='outline-success'
