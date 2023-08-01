@@ -28,7 +28,7 @@ export default function ShoppingCartView () {
         onClose={() => setShow(false)}
         dismissible
       >
-        <Container className='text-center fluid h-100'>
+        <Container className='text-center'>
           <Alert.Heading>¡Tu compra ha sido realizada!<br /><br />
             Estamos redireccionando al portal de pagos<br /><br />
             <p>
